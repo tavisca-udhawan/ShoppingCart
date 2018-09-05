@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace OnlineStore
 {
-    public class Cart
+    public class Cart : IProduct
     {
-
-        public List<Items> AddToCart(List<Items> listItems, Items items)
+       public List<Items> AddToCart(List<Items> listItems, Items items)
         {
             //Adding item to cart
             listItems.Add(items);
@@ -29,20 +28,21 @@ namespace OnlineStore
             }
             return listItems;
         }
-        public void showItems(Items items, List<Items> listItems)
+        public void showItems(List<Items> listItems)
         {
             //Show items in a cart
             if (listItems.Count > 0)
             {
                 Console.WriteLine("Items in cart are:");
-                for (int index = 0; index < listItems.Count; index++)
+                foreach(var Items in listItems)
                 {
-                    Console.WriteLine("ID: " + listItems[index].id);
-                    Console.WriteLine("Name: " + listItems[index].name);
-                    Console.WriteLine("Price: " + listItems[index].price);
-                    Console.WriteLine("Quantity: " + listItems[index].quantity);
+                    Console.WriteLine("ID: " + Items.id);
+                    Console.WriteLine("Name: " + Items.name);
+                    Console.WriteLine("Price: " +Items.price);
+                    Console.WriteLine("Quantity: " + Items.quantity);
                     Console.WriteLine("---------------------------------------");
                 }
+              
             }
             else
             {
@@ -53,15 +53,18 @@ namespace OnlineStore
         {
             //clear cart
             listItems.Clear();
+            Console.WriteLine("Cart is Empty");
             return listItems;
         }
         public int TotalPriceInCart(List<Items> listItems)
         {
+            //calculate total amount in cart
             int sum = 0;
             for (int index = 0; index < listItems.Count; index++)
             {
                 sum += ((listItems[index].price) * (listItems[index].quantity));
             }
             return sum;
+        }
     }
 }

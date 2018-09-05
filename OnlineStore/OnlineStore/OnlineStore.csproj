@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cart.cs" />
+    <Compile Include="IPayment.cs" />
+    <Compile Include="IProduct.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="PaymentMethod.cs" />
     <Compile Include="Program.cs" />

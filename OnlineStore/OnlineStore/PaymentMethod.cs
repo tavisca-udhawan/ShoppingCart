@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace OnlineStore
 {
-    class PaymentMethod
+    class PaymentMethod:IPayment
     {
-        enum Payment
+        public void Cash()
         {
-            Cash,
-            Online
+            //cash payment
+            Console.WriteLine("Order placed Successfully by cash");
         }
+         public void Online()
+        {
+            //online payment
+            Console.WriteLine("Order placed Successfully by Debit card");
+    }
+        
     }
 }
